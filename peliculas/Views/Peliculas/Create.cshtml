@@ -1,0 +1,63 @@
+﻿@model peliculas.Models.Pelicula
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Pelicula</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Titulo" class="control-label"></label>
+                <input asp-for="Titulo" class="form-control" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sipnosis" class="control-label"></label>
+                <input asp-for="Sipnosis" class="form-control" />
+                <span asp-validation-for="Sipnosis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaEstreno" class="control-label"></label>
+                <input asp-for="FechaEstreno" class="form-control" />
+                <span asp-validation-for="FechaEstreno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Duracion" class="control-label"></label>
+                <input asp-for="Duracion" class="form-control" />
+                <span asp-validation-for="Duracion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GeneroId" class="control-label">Genero</label>
+                @Html.DropDownListFor(model => model.GeneroId, ViewBag.listgeneros as SelectList, "Selecciona un Genero", new { @class = "form-control" })
+                <span asp-validation-for="GeneroId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DirectorId" class="control-label">Director</label>
+                @Html.DropDownListFor(model => model.DirectorId, ViewBag.listdirectores as SelectList, "Selecciona un Director", new { @class = "form-control" })
+                <span asp-validation-for="DirectorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImagenFile" class="control-label"></label>
+                <input asp-for="ImagenFile" action="image/*" class="form-control" />
+                <span asp-validation-for="ImagenFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,45 @@
+﻿
+@model peliculas.Models.LoginInputModel;
+
+@{
+    ViewData["Title"] = "Index";
+    LoginInputModel login = new LoginInputModel();
+    login.Username = "admin";
+    login.Password = "Admin123*";
+    login.RememberMe = false;
+   
+}
+
+
+<div class="row" style="display: flex; justify-content: center; align-items: center;">
+    <div class="col-md-4">
+        <section>
+            <form id="account" method="post">
+                <h4>Ingresar al Sistema de Peliculas</h4>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-floating">
+                    <input asp-for="@login.Username" class="form-control" autocomplete="Usuario" aria-required="true" />
+                    <label asp-for="@login.Username" class="form-label"></label>
+                    <span asp-validation-for="@login.Username" class="text-danger"></span>
+                </div>
+                <div class="form-floating">
+                    <input asp-for="@login.Password" class="form-control" autocomplete="Contraseña" aria-required="true" />
+                    <label asp-for="@login.Password" class="form-label"></label>
+                    <span asp-validation-for="@login.Password" class="text-danger"></span>
+                </div>
+                <div>
+                    <div class="checkbox">
+                        <label asp-for="@login.RememberMe" class="form-label">
+                            <input class="form-check-input" asp-for="@login.RememberMe" />
+                            @Html.DisplayNameFor(m => @m.RememberMe)
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="w-100 btn btn-lg btn-primary">Ingresar</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>

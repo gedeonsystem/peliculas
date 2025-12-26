@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using LibreriaWeb.AppDbContext;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using LibreriaWeb.AppDbContext;
 using peliculas.Models;
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace peliculas.Controllers
 {
@@ -20,6 +21,7 @@ namespace peliculas.Controllers
             _context = context;
         }
 
+        [Authorize]
         // GET: Peliculas
         public async Task<IActionResult> Index()
         {
